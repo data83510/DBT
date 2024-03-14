@@ -1,0 +1,33 @@
+Q.1
+
+KD4_Shreyansh_83510>select onum,cnum from ORDERS where cnum=(select cnum from CUSTOMERS where cname='cisneros');
++------+------+
+| onum | cnum |
++------+------+
+| 3001 | 2008 |
+| 3006 | 2008 |
++------+------+
+2 rows in set (0.00 sec)
+
+
+Q.2
+
+KD4_Shreyansh_83510>select cname,rating from CUSTOMERS where cnum in (select cnum from ORDERS where amt>(select avg(amt) from ORDERS));
++---------+--------+
+| cname   | rating |
++---------+--------+
+| Liu     |    200 |
+| Clemens |    100 |
++---------+--------+
+2 rows in set (0.01 sec)
+
+Q.3
+
+KD4_Shreyansh_83510>select sum(amt) from ORDERS group by snum having sum(amt) > (select max(amt) from ORDERS);
++----------+
+| sum(amt) |
++----------+
+| 15382.07 |
++----------+
+1 row in set (0.00 sec)
+
